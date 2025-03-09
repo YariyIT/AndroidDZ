@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DZ03</string>
+    <string name="first_Text1">Первая кнопка не нажата</string>
+    <string name="second_Text1">Вторая кнопка не нажата</string>
+</resources>
