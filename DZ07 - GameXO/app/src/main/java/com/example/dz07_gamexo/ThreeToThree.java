@@ -1,16 +1,20 @@
 package com.example.dz07_gamexo;
 
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.Objects;
 
 public class ThreeToThree extends AppCompatActivity {
 
@@ -23,6 +27,18 @@ public class ThreeToThree extends AppCompatActivity {
         Button btn = findViewById(R.id.button_one);
         ImageView img1 = findViewById(R.id.img_anim_o_two);
         Button btn1 = findViewById(R.id.button_two);
+
+        TextView text = findViewById(R.id.textView);
+        Intent intGameMode = getIntent();
+        String gameMode = intGameMode.getStringExtra("game_mode");
+
+
+
+        if (Objects.equals(gameMode, "1")){
+            text.setText("1");
+        }else{
+            text.setText("2");
+        }
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,5 +53,6 @@ public class ThreeToThree extends AppCompatActivity {
                 ((AnimationDrawable) img1.getDrawable()).start();
             }
         });
+
     }
 }
