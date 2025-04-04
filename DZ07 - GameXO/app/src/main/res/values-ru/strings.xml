@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DZ07 - GameXO</string>
+    <string name="enter">Нажмите для продолжения</string>
+    <string name="rand">рандомный</string>
+    <string name="intell">интеллектуальный</string>
+    <string name="field_size">Размер поля</string>
+    <string name="game_mode">Режим игры</string>
+    <string name="three_to_three">3 х 3</string>
+    <string name="five_to_five">5 х 5</string>
+    <string name="start">Начать</string>
+    <string name="player">Игрок</string>
+    <string name="comp">Компьютер</string>
+</resources>

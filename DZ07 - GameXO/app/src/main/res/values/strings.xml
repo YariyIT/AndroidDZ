@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">DZ07 - GameXO</string>
+    <string name="enter">Click to continue</string>
+    <string name="rand">random</string>
+    <string name="intell">intellegence</string>
+    <string name="field_size">Field size</string>
+    <string name="game_mode">Game mode</string>
+    <string name="three_to_three">3 x 3</string>
+    <string name="five_to_five">5 x 5</string>
+    <string name="start">Start</string>
+    <string name="player">Player</string>
+    <string name="comp">Computer</string>
+</resources>
