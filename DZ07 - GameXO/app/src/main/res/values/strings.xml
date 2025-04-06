@@ -10,4 +10,7 @@
     <string name="start">Start</string>
     <string name="player">Player</string>
     <string name="comp">Computer</string>
+    <string name="turn">Your turn</string>
+    <string name="new_party">New party</string>
+    <string name="menu">Menu</string>
 </resources>

@@ -11,4 +11,7 @@
     <string name="start">Начать</string>
     <string name="player">Игрок</string>
     <string name="comp">Компьютер</string>
+    <string name="turn">Ваш ход</string>
+    <string name="new_party">Новая партия</string>
+    <string name="menu">Меню</string>
 </resources>
