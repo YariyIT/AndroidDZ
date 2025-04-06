@@ -7,25 +7,28 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
-public class PartyResult3 extends Dialog {
+public class PartyResult5 extends Dialog {
 
     private final String message;       // Объявляем переменную для получения сообщения
-    private final ThreeToThree threeToThree;       // Объявляем переменную поля 3 х 3
+    private final FiveToFive fiveToFive;       // Объявляем переменную поля 3 х 3
 
-    public PartyResult3(@NonNull Context context, String message, ThreeToThree threeToThree) {       // Создаём конструктор метода
+    public PartyResult5(@NonNull Context context, String message, FiveToFive fiveToFive) {
         super(context);
         this.message = message;
-        this.threeToThree = threeToThree;
+        this.fiveToFive = fiveToFive;
     }
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_party_result3);
+        setContentView(R.layout.activity_party_result5);
 
         TextView text = findViewById(R.id.party_result);       // Создаём переменную для обращения к текстовому полю
         Button new_party_bnt = findViewById(R.id.new_party);       // Создаём переменную для обращения к кнопке запуска новой партии
@@ -34,11 +37,10 @@ public class PartyResult3 extends Dialog {
         new_party_bnt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                threeToThree.newParty();       // Запускаем новый матч
+                fiveToFive.newParty();       // Запускаем новый матч
                 dismiss();       // Закрытие диалогового окна
             }
         });
-
-
     }
 }
+

@@ -30,9 +30,9 @@ public class ThreeToThree extends AppCompatActivity {
     private int scoreTurn = 0;       // Создаём переменную счёта ходов
     private boolean motion = true;       // Создаём переменную продолжения/завершения игры
     private int[] playField = {0, 0, 0, 0, 0, 0, 0, 0, 0};       // Создаём массив игрового поля
-    private final int[][] fieldCheckWin = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, {0, 4, 8}, {2, 4, 6}};
-
-
+    private final int[][] fieldCheckWin = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, {0, 4, 8}, {2, 4, 6}};       // Создаём массив для проверки победы
+    private int scorePlayer = 0;
+    private int scoreComp = 0;
 
 
     @Override
@@ -61,14 +61,8 @@ public class ThreeToThree extends AppCompatActivity {
         image[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textTurn.setText("Нажатие");
-                if (checkPositionField(0)) {
-                    action((ImageView) v, 0);       // запускаем метод совершения хода
-                    try {
-                        actionComp(gm);       // запускаем метод совершения хода
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+                if (checkPositionField(0)) {       // Проверяем, пуста ли ячейка поля
+                    action((ImageView) v, 0, gm);       // запускаем метод совершения хода
                 }
             }
         });
@@ -76,13 +70,8 @@ public class ThreeToThree extends AppCompatActivity {
         image[1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkPositionField(1)) {
-                    action((ImageView) v, 1);       // запускаем метод совершения хода
-                    try {
-                        actionComp(gm);       // запускаем метод совершения хода
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+                if (checkPositionField(1)) {       // Проверяем, пуста ли ячейка поля
+                    action((ImageView) v, 1, gm);       // запускаем метод совершения хода
                 }
             }
         });
@@ -90,13 +79,8 @@ public class ThreeToThree extends AppCompatActivity {
         image[2].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkPositionField(2)) {
-                    action((ImageView) v, 2);       // запускаем метод совершения хода
-                    try {
-                        actionComp(gm);       // запускаем метод совершения хода
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+                if (checkPositionField(2)) {       // Проверяем, пуста ли ячейка поля
+                    action((ImageView) v, 2, gm);       // запускаем метод совершения хода
                 }
             }
         });
@@ -104,13 +88,8 @@ public class ThreeToThree extends AppCompatActivity {
         image[3].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkPositionField(3)) {
-                    action((ImageView) v, 3);       // запускаем метод совершения хода
-                    try {
-                        actionComp(gm);       // запускаем метод совершения хода
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+                if (checkPositionField(3)) {       // Проверяем, пуста ли ячейка поля
+                    action((ImageView) v, 3, gm);       // запускаем метод совершения хода
                 }
             }
         });
@@ -118,13 +97,8 @@ public class ThreeToThree extends AppCompatActivity {
         image[4].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkPositionField(4)) {
-                    action((ImageView) v, 4);       // запускаем метод совершения хода
-                    try {
-                        actionComp(gm);       // запускаем метод совершения хода
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+                if (checkPositionField(4)) {       // Проверяем, пуста ли ячейка поля
+                    action((ImageView) v, 4, gm);       // запускаем метод совершения хода
                 }
             }
         });
@@ -132,13 +106,8 @@ public class ThreeToThree extends AppCompatActivity {
         image[5].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkPositionField(5)) {
-                    action((ImageView) v, 5);       // запускаем метод совершения хода
-                    try {
-                        actionComp(gm);       // запускаем метод совершения хода
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+                if (checkPositionField(5)) {       // Проверяем, пуста ли ячейка поля
+                    action((ImageView) v, 5, gm);       // запускаем метод совершения хода
                 }
             }
         });
@@ -146,13 +115,8 @@ public class ThreeToThree extends AppCompatActivity {
         image[6].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkPositionField(6)) {
-                    action((ImageView) v, 6);       // запускаем метод совершения хода
-                    try {
-                        actionComp(gm);       // запускаем метод совершения хода
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+                if (checkPositionField(6)) {       // Проверяем, пуста ли ячейка поля
+                    action((ImageView) v, 6, gm);       // запускаем метод совершения хода
                 }
             }
         });
@@ -160,13 +124,8 @@ public class ThreeToThree extends AppCompatActivity {
         image[7].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkPositionField(7)) {
-                    action((ImageView) v, 7);       // запускаем метод совершения хода
-                    try {
-                        actionComp(gm);       // запускаем метод совершения хода
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+                if (checkPositionField(7)) {       // Проверяем, пуста ли ячейка поля
+                    action((ImageView) v, 7, gm);       // запускаем метод совершения хода
                 }
             }
         });
@@ -174,18 +133,11 @@ public class ThreeToThree extends AppCompatActivity {
         image[8].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkPositionField(8)) {
-                    action((ImageView) v, 8);       // запускаем метод совершения хода
-                    try {
-                        actionComp(gm);       // запускаем метод совершения хода
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+                if (checkPositionField(8)) {       // Проверяем, пуста ли ячейка поля
+                    action((ImageView) v, 8, gm);       // запускаем метод совершения хода
                 }
             }
         });
-
-
     }
     private boolean checkPositionField(int positionField){       // Метод проверки поля по позиции пусто/занято
         boolean space = false;       // Создаём переменную для возвращения значения поле занято/свободно, и присваеваем значение -занято-
@@ -195,41 +147,29 @@ public class ThreeToThree extends AppCompatActivity {
         return space;       // Возвращаем значение поля пусто/занято
     }
 
-    private void action(ImageView imageView, int positionField) {       // Метод совершения хода
-
+    private void action(ImageView imageView, int positionField, int gm) {       // Метод совершения хода
         scoreTurn++;
-
-        playField[positionField] = 1;
-        textTurn.setText("+");
-        // Ходит игрок
+        textTurn.setText(String.valueOf(scoreTurn));
+        if (turnWinner == 1){
+            playField[positionField] = 1;
+            // Ходит игрок
             imageView.setImageResource(R.drawable.anim_x);       // Заменяем пустое изображение анимацией КРЕСТИКА
             ((AnimationDrawable) image[positionField].getDrawable()).start();       // Запускаем анимацию отрисовки КРЕСТИКА
-
             if (checkWin()) {       // Проверяем являлся ли ход победным
-                textTurn.setText("Вы победили!");
                 PartyResult3 partyResult3 = new PartyResult3(ThreeToThree.this, "Вы победили!", ThreeToThree.this);       // Открываем диалоговое окно
                 partyResult3.setCancelable(false);       // Делаем, чтобы диалоговое окно не зкрывалось при нажатии за пределами
                 partyResult3.show();       // Показываем диалоговое окно
+                scorePlayer++;       // Увеличиваем счётчик побед у игрока
+                playerScore.setText(String.valueOf(scorePlayer));       // Передаём значение побед в соответствующее поле
+            }else if (scoreTurn == 9){       // Если ни кто не победил
+                PartyResult3 partyResult3 = new PartyResult3(ThreeToThree.this, "Ничья!", ThreeToThree.this);       // Открываем диалоговое окно
+                partyResult3.setCancelable(false);       // Делаем, чтобы диалоговое окно не зкрывалось при нажатии за пределами
+                partyResult3.show();       // Показываем диалоговое окно
+            }else {
+                turnWinner = 2;
             }
 
-//
-//
-
-
-
-
-
-    }
-
-    private void actionComp(int gm) throws InterruptedException {
-        Thread.sleep(1500);
-        if (scoreTurn == 5){       // Если ни кто не победил
-            PartyResult3 partyResult3 = new PartyResult3(ThreeToThree.this, "Ничья!", ThreeToThree.this);       // Открываем диалоговое окно
-            partyResult3.setCancelable(false);       // Делаем, чтобы диалоговое окно не зкрывалось при нажатии за пределами
-            partyResult3.show();       // Показываем диалоговое окно
-        }else {
-            textTurn.setText("Ходит компьютер");
-
+        } else {
             if (gm == 1){       // Проверка режима игры
                 // Если режим игры рандомный
                 int posComp = randTurn();       // Создаём переменную для получения позиции хода компьютера, и запускаем рандомный ход
@@ -241,12 +181,27 @@ public class ThreeToThree extends AppCompatActivity {
                     PartyResult3 partyResult3 = new PartyResult3(ThreeToThree.this, "Компьютер победил!", ThreeToThree.this);       // Открываем диалоговое окно
                     partyResult3.setCancelable(false);       // Делаем, чтобы диалоговое окно не зкрывалось при нажатии за пределами
                     partyResult3.show();       // Показываем диалоговое окно
+                    scoreComp++;       // Увеличиваем счётчик побед у компьютера
+                    computerScore.setText(String.valueOf(scoreComp));       // Передаём значение побед в соответствующее поле
                 }
             }else{
-
+                int posComp = intellegentTurn();       // Создаём переменную для получения позиции хода компьютера, и запускаем интеллектуальный ход
+                playField[posComp] = 2;
+                ImageView imageView1 = image[posComp];       // Создаём переменную для поля хода компьютера, и добавляем на ссылку поля по полученному индексу
+                imageView1.setImageResource(R.drawable.anim_o);       // Заменяем пустое изображение анимацией НОЛИКА
+                ((AnimationDrawable) image[posComp].getDrawable()).start();       // Запускаем анимацию отрисовки НОЛИКА
+                if (checkWin()){       // Проверяем являлся ли ход победным
+                    PartyResult3 partyResult3 = new PartyResult3(ThreeToThree.this, "Компьютер победил!", ThreeToThree.this);       // Открываем диалоговое окно
+                    partyResult3.setCancelable(false);       // Делаем, чтобы диалоговое окно не зкрывалось при нажатии за пределами
+                    partyResult3.show();       // Показываем диалоговое окно
+                    scoreComp++;       // Увеличиваем счётчик побед у компьютера
+                    computerScore.setText(String.valueOf(scoreComp));       // Передаём значение побед в соответствующее поле
+                }
             }
-            textTurn.setText("Ходите");
             turnWinner = 1;
+        }
+        if (turnWinner == 2 && scoreTurn != 9){
+            action(imageView, 8, gm);
         }
     }
 
@@ -260,17 +215,79 @@ public class ThreeToThree extends AppCompatActivity {
         return space;
     }
 
-    private int randTurn(){
+    private int randTurn(){       // Метод рандомного хода
         int tmp;
-        List<int[]> randField = new ArrayList<>();
+        List<int[]> randField = new ArrayList<>();       // Создаём динамический массив
         for (int i = 0; i < playField.length; i++) {
             if (playField[i] == 0){
-                randField.add(new int[] {i});
+                randField.add(new int[] {i});       // Добавляем в него координаты пустых ячеек
             }
         }
-        tmp = (int) (Math.random()*randField.size());
-        int[] turn = randField.get(tmp);
-        tmp = turn[0];
+        tmp = (int) (Math.random()*randField.size());       // Рандомно определяем координаты хода
+        int[] turn = randField.get(tmp);       // Создаём обычный массив и переносим в него значение координаты
+        tmp = turn[0];       // Переносим координату в интовую переменную
+        return tmp;       // Возвращаем координату рандомного хода
+    }
+
+    private int intellegentTurn(){       // Метод интеллектуального хода
+        int tmp;
+        tmp = checkWinTurn(2);       // Запускаем проверку победного хода компьютера
+        if (tmp !=9) {
+            return tmp;       // Если есть такой ход, возвращаем его координаты
+        }
+        tmp = checkWinTurn(1);       // Запускаем проверку победного хода игрока
+        if (tmp !=9) {
+            return tmp;       // Если есть такой ход, возвращаем его координаты
+        }
+        tmp = randTurn();       // Запускаем рандомный ход
+        return tmp;       // Возвращаем его координаты
+    }
+
+    private int checkWinTurn(int playerOrComp){
+        int tmp = 9;
+        // Проверка победного хода
+        for (int i = 0; i < 8; i++) {
+                // Если две ячейки заняты одинаковыми (Х или О), а одна пустая, то вернуть координаты пустой
+                if ((playField[fieldCheckWin[i][0]] == playField[fieldCheckWin[i][1]] && playField[fieldCheckWin[i][0]] == playerOrComp) && playField[fieldCheckWin[i][2]] == 0){
+                    tmp = fieldCheckWin[i][2];
+                    return tmp;
+                }
+                if ((playField[fieldCheckWin[i][0]] == playField[fieldCheckWin[i][2]] && playField[fieldCheckWin[i][0]] == playerOrComp) && playField[fieldCheckWin[i][1]] == 0){
+                    tmp = fieldCheckWin[i][1];
+                    return tmp;
+                }
+                if ((playField[fieldCheckWin[i][2]] == playField[fieldCheckWin[i][1]] && playField[fieldCheckWin[i][2]] == playerOrComp) && playField[fieldCheckWin[i][0]] == 0){
+                    tmp = fieldCheckWin[i][0];
+                    return tmp;
+                }
+        }
         return tmp;
+    }
+
+    public void newParty(){       // Метод подготовки нового матча
+        playField = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};       //  -new int[]- Перезаписываем массив (обнуляем его)
+        turnWinner = 1;       // Возвращаем ход игроку
+        scoreTurn = 0;       // Сбрасываем счётчик ходов на 0
+
+        image[0] = findViewById(R.id.image1);       // Присваеваем переменной -image1- ссылку для обращения к полю -image1-
+        image[1] = findViewById(R.id.image2);
+        image[2] = findViewById(R.id.image3);
+        image[3] = findViewById(R.id.image4);
+        image[4] = findViewById(R.id.image5);
+        image[5] = findViewById(R.id.image6);
+        image[6] = findViewById(R.id.image7);
+        image[7] = findViewById(R.id.image8);
+        image[8] = findViewById(R.id.image9);
+
+        image[0].setImageResource(R.drawable.xoimg0);       // Заменяем анимации на прозрачные картинки
+        image[1].setImageResource(R.drawable.xoimg0);
+        image[2].setImageResource(R.drawable.xoimg0);
+        image[3].setImageResource(R.drawable.xoimg0);
+        image[4].setImageResource(R.drawable.xoimg0);
+        image[5].setImageResource(R.drawable.xoimg0);
+        image[6].setImageResource(R.drawable.xoimg0);
+        image[7].setImageResource(R.drawable.xoimg0);
+        image[8].setImageResource(R.drawable.xoimg0);
+
     }
 }

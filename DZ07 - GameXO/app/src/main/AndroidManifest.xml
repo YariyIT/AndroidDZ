@@ -13,6 +13,9 @@
         android:theme="@style/Theme.DZ07GameXO"
         tools:targetApi="31">
         <activity
+            android:name=".PartyResult5"
+            android:exported="false" />
+        <activity
             android:name=".PartyResult"
             android:exported="false" />
         <activity
