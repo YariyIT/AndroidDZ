@@ -342,7 +342,6 @@ public class FiveToFive extends AppCompatActivity {
                 }
             }else{
                 int posComp = intellegentTurn();       // Создаём переменную для получения позиции хода компьютера, и запускаем интеллектуальный ход
-                textTurn.setText(String.valueOf(posComp));
                 playField[posComp] = 2;
                 ImageView imageView1 = image[posComp];       // Создаём переменную для поля хода компьютера, и добавляем на ссылку поля по полученному индексу
                 imageView1.setImageResource(R.drawable.anim_o);       // Заменяем пустое изображение анимацией НОЛИКА

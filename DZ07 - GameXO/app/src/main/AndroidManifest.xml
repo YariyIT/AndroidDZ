@@ -14,10 +14,12 @@
         tools:targetApi="31">
         <activity
             android:name=".PartyResult5"
-            android:exported="false" />
+            android:exported="false"
+            tools:ignore="Instantiatable" />
         <activity
-            android:name=".PartyResult"
-            android:exported="false" />
+            android:name=".PartyResult3"
+            android:exported="false"
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".FiveToFive"
             android:exported="false" />

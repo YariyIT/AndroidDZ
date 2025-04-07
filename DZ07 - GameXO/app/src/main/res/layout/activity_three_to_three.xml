@@ -206,7 +206,7 @@
         android:id="@+id/textTurn"
         android:layout_width="250dp"
         android:layout_height="30dp"
-        android:text="@string/turn"
+        android:text=""
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="20sp"

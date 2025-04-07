@@ -149,7 +149,6 @@ public class ThreeToThree extends AppCompatActivity {
 
     private void action(ImageView imageView, int positionField, int gm) {       // Метод совершения хода
         scoreTurn++;
-        textTurn.setText(String.valueOf(scoreTurn));
         if (turnWinner == 1){
             playField[positionField] = 1;
             // Ходит игрок
