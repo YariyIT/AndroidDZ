@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DZ09</string>
+    <string name="press_to_continue">Нажмите для продолжения</string>
+    <string name="main_text">Добро пожаловать на демонстрацию кнопок!</string>
+    <string name="day">"День  "</string>
+    <string name="night">"Ночь  "</string>
+    <string name="comet">Комета</string>
+    <string name="ufo">НЛО</string>
+</resources>

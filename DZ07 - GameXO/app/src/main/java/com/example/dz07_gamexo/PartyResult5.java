@@ -17,7 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class PartyResult5 extends Dialog {
 
     private final String message;       // Объявляем переменную для получения сообщения
-    private final FiveToFive fiveToFive;       // Объявляем переменную поля 3 х 3
+    private final FiveToFive fiveToFive;       // Объявляем переменную поля 5 х 5
 
     public PartyResult5(@NonNull Context context, String message, FiveToFive fiveToFive) {
         super(context);

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">DZ09</string>
+    <string name="press_to_continue">Press to continue</string>
+    <string name="main_text">Welcome to the button demo!</string>
+    <string name="day">"Day  "</string>
+    <string name="night">"Night  "</string>
+    <string name="comet">Comet</string>
+    <string name="ufo">UFO</string>
+
+</resources>
