@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences preference;       // Объявляем переменную для сохранений
 
     private static final String SHARED_PREF_NAME = "mypref";
-    private static final String KEY_COST = "cost";
+    private static final String KEY_COAST = "coast";
     private static final String KEY_SALE = "sale";
     private static final String KEY_TIP = "tip";
 
@@ -42,7 +42,10 @@ public class MainActivity extends AppCompatActivity {
         EditText coastOfService = findViewById(R.id.coast_of_service);       // Создаём переменную и присваеваем ей ссылку на редактируемый текст
         TextView saleText = findViewById(R.id.sale);       // Создаём переменную и присваеваем ей ссылку на текст скидки
         TextView tipResult = findViewById(R.id.tip_result);       // Создаём переменную и присваеваем ей ссылку на текст чаевых
-
+        preference = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);       // Создыём файл с настройками
+        String coast = preference.getString(KEY_COAST, null);
+        String sale = preference.getString(KEY_SALE, null);
+        String tip = preference.getString(KEY_TIP, null);
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor editor = preference.edit();       // Создаём переменную для редактирования сохранённых данных
-                editor.putString(KEY_COST, coastOfService.getText().toString());
+                editor.putString(KEY_COAST, coastOfService.getText().toString());
                 editor.putString(KEY_SALE, currencyTip);
                 editor.putString(KEY_TIP, saleIntText);
                 editor.apply();
