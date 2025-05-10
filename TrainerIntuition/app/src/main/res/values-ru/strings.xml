@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Trainer Intuition</string>
+    <string name="tr_in">Тренажёр интуиции</string>
+    <string name="press_to_continue">НАЖМИТЕ ДЛЯ ПРОДОЛЖЕНИЯ</string>
+    <string name="menu">МЕНЮ</string>
+    <string name="play">ИГРАТЬ</string>
+    <string name="train">ТРЕНИРОВАТЬСЯ</string>
+</resources>
