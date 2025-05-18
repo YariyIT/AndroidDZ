@@ -6,4 +6,14 @@
     <string name="menu">МЕНЮ</string>
     <string name="play">ИГРАТЬ</string>
     <string name="train">ТРЕНИРОВАТЬСЯ</string>
+    <string name="difficult_level">Выберете уровень сложности</string>
+    <string name="one_of_two">1 из 2</string>
+    <string name="one_of_three">1 из 3</string>
+    <string name="one_of_four">1 из 4</string>
+    <string name="one_of_five">1 из 5</string>
+    <string name="progress">ПРОГРЕСС</string>
+    <string name="choiсe_1_of_2_plays">Выберите игру в категории,\n 1 из 2</string>
+    <string name="picture_cards">Карточки с картинкой</string>
+    <string name="in_development">В разработке</string>
+    <string name="where_is_the_rabbit">Где кролик</string>
 </resources>

@@ -42,7 +42,7 @@
             android:textColor="@color/black"/>
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/play"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:text="@string/play"
@@ -53,10 +53,21 @@
             android:textColor="@color/white"/>
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/train"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:text="@string/train"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:textStyle="italic"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="@string/progress"
             android:layout_weight="1"
             android:gravity="center"
             android:textSize="25sp"
@@ -68,6 +79,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:srcCompat="@drawable/space"
-            android:layout_weight="4"/>
+            android:layout_weight="3"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,4 +5,14 @@
     <string name="menu">MENU</string>
     <string name="play">PLAY</string>
     <string name="train">TRAIN</string>
+    <string name="difficult_level">Choose the difficulty level</string>
+    <string name="one_of_two">1 of 2</string>
+    <string name="one_of_three">1 of 3</string>
+    <string name="one_of_four">1 of 4</string>
+    <string name="one_of_five">1 of 5</string>
+    <string name="progress">PROGRESS</string>
+    <string name="choiсe_1_of_2_plays">Choose a game in a category,\n 1 of 2</string>
+    <string name="picture_cards">Picture cards</string>
+    <string name="in_development">In development</string>
+    <string name="where_is_the_rabbit">Where\'s the rabbit</string>
 </resources>

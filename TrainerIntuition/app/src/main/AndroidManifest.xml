@@ -13,6 +13,18 @@
         android:theme="@style/Theme.TrainerIntuition"
         tools:targetApi="31">
         <activity
+            android:name=".Play_1_of_5"
+            android:exported="false" />
+        <activity
+            android:name=".Play_1_of_4"
+            android:exported="false" />
+        <activity
+            android:name=".Play_1_of_3"
+            android:exported="false" />
+        <activity
+            android:name=".Play_1_of_2"
+            android:exported="false" />
+        <activity
             android:name=".PlayCards1of2"
             android:exported="false" />
         <activity

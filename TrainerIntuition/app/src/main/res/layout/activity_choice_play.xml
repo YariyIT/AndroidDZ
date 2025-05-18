@@ -5,6 +5,97 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChoicePlay">
+    tools:context=".ChoicePlay"
+    android:background="@drawable/backgraund_blue_grin">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+
+            <TextView
+                android:id="@+id/text_difficult_level"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/difficult_level"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                />
+
+            <ImageView
+                android:id="@+id/img_open_all_lvl"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/space" />
+
+            <TextView
+                android:id="@+id/text_1_of_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/one_of_two"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_gif_lvl_open"/>
+
+            <TextView
+                android:id="@+id/text_1_of_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/one_of_three"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_gif_lvl_closed"/>
+
+            <TextView
+                android:id="@+id/text_1_of_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/one_of_four"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_gif_lvl_closed"/>
+
+            <TextView
+                android:id="@+id/text_1_of_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/one_of_five"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_gif_lvl_closed"/>
+
+            <ImageView
+                android:id="@+id/img_reset_all_lvl"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/space" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
