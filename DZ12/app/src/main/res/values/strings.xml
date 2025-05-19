@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">DZ12</string>
+    <string name="pull_ups">Pull ups</string>
+    <string name="push_ups">Push ups</string>
+    <string name="squats">Squats</string>
+    <string name="run">Run</string>
+    <string name="training">Training</string>
+    <string name="drawer_close" translatable="false">Close drawer</string>
+    <string name="drawer_open" translatable="false">Open drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

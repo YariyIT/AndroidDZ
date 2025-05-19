@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DZ12</string>
+    <string name="pull_ups">Подтягивания</string>
+    <string name="push_ups">Отжимания</string>
+    <string name="squats">Приседания</string>
+    <string name="run">Бег</string>
+    <string name="training">Тренировки</string>
+</resources>

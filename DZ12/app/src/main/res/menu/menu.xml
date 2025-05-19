@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/hand">
+        <item android:id="@+id/pull_ups"
+            android:title="@string/pull_ups" />
+        <item android:id="@+id/push_ups"
+            android:title="@string/push_ups" />
+    </group>
+    <group android:id="@+id/foot">
+        <item android:id="@+id/squats"
+            android:title="@string/squats" />
+        <item android:id="@+id/run"
+            android:title="@string/run" />
+    </group>
+</menu>
