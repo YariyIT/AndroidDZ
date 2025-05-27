@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,6 +42,7 @@ public class ChoicePlay extends AppCompatActivity {
                     editor.apply();
                     Intent intent = new Intent(ChoicePlay.this, ChoicePlay.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.anim_alfa_up, R.anim.anim_alfa_down);       // Мягкий переход
                 }
             }
         });
@@ -52,6 +54,7 @@ public class ChoicePlay extends AppCompatActivity {
                 if (difLvl>=2){
                     Intent intent = new Intent(ChoicePlay.this, Play_1_of_2.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.anim_alfa_up, R.anim.anim_alfa_down);       // Мягкий переход
                 }
             }
         });
@@ -100,10 +103,22 @@ public class ChoicePlay extends AppCompatActivity {
                     clickAllOpen[0] = 0;
                     SharedPreferences.Editor editor = save.edit();
                     editor.putInt("DifLvl", 2);
+                    editor.putInt("proPicCar", 1);
                     editor.apply();
                     Intent intent = new Intent(ChoicePlay.this, ChoicePlay.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.anim_alfa_up, R.anim.anim_alfa_down);       // Мягкий переход
                 }
+            }
+        });
+
+        Button bntMenuBack = findViewById(R.id.bnt_menu_back);
+        bntMenuBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ChoicePlay.this, Menu.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_alfa_up, R.anim.anim_alfa_down);       // Мягкий переход
             }
         });
     }

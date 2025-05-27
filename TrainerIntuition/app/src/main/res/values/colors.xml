@@ -4,5 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#F6E350</color>
     <color name="grey">#7A7A7A</color>
+    <color name="green">#52C13F</color>
+    <color name="red">#CE3636</color>
 
 </resources>

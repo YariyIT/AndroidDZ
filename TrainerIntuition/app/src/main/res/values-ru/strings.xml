@@ -16,4 +16,11 @@
     <string name="picture_cards">Карточки с картинкой</string>
     <string name="in_development">В разработке</string>
     <string name="where_is_the_rabbit">Где кролик</string>
+    <string name="back">НАЗАД</string>
+    <string name="lt"><![CDATA[<]]></string>
+    <string name="pic_card_dialog_prew">\tКарточки с картинками.\n\tВыбирайте карточку с картинкой или без неё. Правильные ответы будут отмечаться зелёным, а неправильные красным.\n\tС 1 по 7 уровни вы можете совершить до 3 ошибок. На 8 уровне только 2. На 9 - 1. На 10 нельзя совершать ни одной ошибки.</string>
+    <string name="dialog_lost">Вы проиграли...</string>
+    <string name="press_to_restart">I won\'t give up</string>
+    <string name="dialog_victory">You have passed the level!</string>
+    <string name="dialog_absolute_victory">Поздравляем!\n\nВы прошли все уровни!</string>
 </resources>

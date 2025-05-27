@@ -1,5 +1,6 @@
 package com.example.dz12;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,55 +8,47 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 
 public class PullUpsPage extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    Spinner spinnerPullUps;       // Объявляем переменную для спинера
 
-    public PullUpsPage() {
-        // Required empty public constructor
-    }
+    TextView textViewPullUps;       // Объявляем переменную для текстового поля
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FirstPage.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static PullUpsPage newInstance(String param1, String param2) {
-        PullUpsPage fragment = new PullUpsPage();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pull_ups_page, container, false);
+        View view = inflater.inflate(R.layout.fragment_pull_ups_page, container, false);       // Объявляем переменную -view- для возможности написания кода внутри
+
+        spinnerPullUps = view.findViewById(R.id.spinner_pull_ups);       // Привязываем переменную -spinnerPullUps- к полю спинера -spinner_pull_ups-
+        textViewPullUps = view.findViewById(R.id.text_view_pull_ups);       // Привязываем переменную -textViewPullUps- к текстовому полю -text_view_pull_ups-
+
+        spinnerPullUps.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {       // Создаём слушатель для спинера, который срабатывает при выборе
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String text = getTextPullUps(position);       // Создаём текстовую переменную, передавая в неё значение полученное через метод -getTextPullUps- по позиции -position-
+                textViewPullUps.setText(text);       // Добавляем в текстовое поле полученное текстовое значение
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        return view;
+    }
+
+    private String getTextPullUps(int position){       // Метод получения значения по позиции
+        String[] description = getResources().getStringArray(R.array.pull_ups_text);
+        return description[position];
     }
 }
