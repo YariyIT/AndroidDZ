@@ -10,6 +10,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.DrawableContainer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewDebug;
@@ -290,6 +291,19 @@ public class PictureCards extends AppCompatActivity {
         imgCard1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                
+                // ----------- Делаем, чтобы левая и правая карточки были не кликабельны пока проходит очередная анимация сдачи карт ------------
+                imgCard1.setClickable(false);
+                imgCard2.setClickable(false);
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        imgCard1.setClickable(true);
+                        imgCard2.setClickable(true);
+                    }
+                }, 2000);
+                // -------------------------------------------------------------------------------------------------------------------------------
 
                 if (spaceOrPicture == 0) {       // Если пустая карта, заменяем отображение колоды с картой, с пустой картинкой
                     imgPictureCardsTable.setImageResource(R.drawable.deck_of_cards_card_space);       // Открываем карту, отображая пустую карту
@@ -346,6 +360,20 @@ public class PictureCards extends AppCompatActivity {
         imgCard2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // ----------- Делаем, чтобы левая и правая карточки были не кликабельны пока проходит очередная анимация сдачи карт ------------
+                imgCard1.setClickable(false);
+                imgCard2.setClickable(false);
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        imgCard1.setClickable(true);
+                        imgCard2.setClickable(true);
+                    }
+                }, 2000);
+                // -------------------------------------------------------------------------------------------------------------------------------
+
                 if (spaceOrPicture == 0) {       // Если пустая карта, заменяем отображение колоды с картой, с пустой картинкой
                     imgPictureCardsTable.setImageResource(R.drawable.deck_of_cards_card_space);
                     TextView textView = findViewById(progress[count]);
