@@ -1,6 +1,5 @@
 package com.example.trainerintuition;
 
-import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
@@ -8,42 +7,31 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.DrawableContainer;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.View;
-import android.view.ViewDebug;
-import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import java.util.Objects;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class PictureCards extends AppCompatActivity {
+public class WhereIsTheRabbit extends AppCompatActivity {
 
     Dialog dialogStart;       // Объявляем переменную для обращения к диалоговому окну в начале игры
     Dialog dialogEndLost, dialogEndVictory, dialogEndAbsoluteVictory;       // Объявляем переменные для обращения к диалоговому окну в конце игры
-    private int picture, spaceOrPicture;       // Объявляем переменные -picture- какая картинка на карте, -spaceOrPicture- карта пустая или с картинкой
-    private ImageView imgPictureCardsTable;       // Объявляем переменную для обращения к полю колоды карт
-    private ImageView imgCard1, imgCard2;       // Объявляем переменные для полей левой и правой карт соответственно
+    private int spaceOrRabbit;       // Объявляем переменную -spaceOrRabbit- наличия кролика в шляпе
+    private ImageView imgHat1, imgHat2;       // Объявляем переменные для полей левой и правой карт соответственно
     private Animation animCard;       // Объявляем переменную для альфа анимации левой и правой карт
     Random random = new Random();       // Создаём переменную для рандомных чисел
     private int count,attempts, errorCounter;       // Объявляем переменные -count- счётчик прогресса, -attempts- колличество попыток, -errorCounter- счётчик ошибок
@@ -52,7 +40,7 @@ public class PictureCards extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_picture_cards);
+        setContentView(R.layout.activity_where_is_the_rabbit);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);       // Чтобы верхняя шторка не мешала
 
         // ------------------------  Вызов диалогового окна в начале игры  ------------------------
@@ -62,11 +50,12 @@ public class PictureCards extends AppCompatActivity {
         Objects.requireNonNull(dialogStart.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));       // Удаляем фон диалогового окна
         dialogStart.setCancelable(false);       // Запрещаем закрывать диалоговое окно кликом за пределами диалогового окны
 
+
         TextView btnClose = dialogStart.findViewById(R.id.button_close);       // Кнопка Назад
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PictureCards.this, Play_1_of_2.class);
+                Intent intent = new Intent(WhereIsTheRabbit.this, Play_1_of_2.class);
                 startActivity(intent);       // Возвращаемся на предидущее окно
                 overridePendingTransition(R.anim.anim_alfa_up, R.anim.anim_alfa_down);       // Мягкий переход
                 dialogStart.dismiss();       // Закрываем диалоговое окно
@@ -81,6 +70,11 @@ public class PictureCards extends AppCompatActivity {
             }
         });
 
+        ImageView prevImg = dialogStart.findViewById(R.id.preview_img);       // Создаём переменную для обращения к полю картинки превью
+        prevImg.setImageResource(R.drawable.rabbit_hat_prew);       // Заменяем превью картинку на превью картинку -где кролик-
+        TextView textPrev = dialogStart.findViewById(R.id.text_description);       // Создаём переменную для обращения к полю теката превью
+        textPrev.setText(R.string.where_is_the_rabbit_dialog_prew);       // Заменяем превью текст на превью текст -где кролик-
+
         dialogStart.show();       // Показать диалоговое окно
 
         //-----------------------------------------------------------
@@ -89,7 +83,7 @@ public class PictureCards extends AppCompatActivity {
         dialogEndLost = new Dialog(this);
         dialogEndLost.requestWindowFeature(Window.FEATURE_NO_TITLE);       // Скрываем заголовок
         dialogEndLost.setContentView(R.layout.dialog_end_lost);       //Путь к диалоговому окну
-        dialogEndLost.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));       // Прозрачный фон
+        Objects.requireNonNull(dialogEndLost.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));       // Прозрачный фон
         dialogEndLost.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);       // Чтобы диалоговое окно расщирялось на всё окно
         dialogEndLost.setCancelable(false);       // Чтобы нельзя было закрыть окно за пределами окна
 
@@ -101,7 +95,7 @@ public class PictureCards extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Вернёмся к выбору уровня
-                Intent intent = new Intent(PictureCards.this, Play_1_of_2.class);
+                Intent intent = new Intent(WhereIsTheRabbit.this, Play_1_of_2.class);
                 startActivity(intent);
                 dialogEndLost.dismiss();       // Закрываем диалоговое окно
             }
@@ -111,7 +105,7 @@ public class PictureCards extends AppCompatActivity {
         buttonContinue2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PictureCards.this, PictureCards.class);
+                Intent intent = new Intent(WhereIsTheRabbit.this, WhereIsTheRabbit.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.anim_alfa_up, R.anim.anim_alfa_down);       // Мягкий переход
                 dialogEndLost.dismiss();
@@ -125,7 +119,7 @@ public class PictureCards extends AppCompatActivity {
         dialogEndVictory = new Dialog(this);
         dialogEndVictory.requestWindowFeature(Window.FEATURE_NO_TITLE);       // Скрываем заголовок
         dialogEndVictory.setContentView(R.layout.dialog_end_victory);       //Путь к диалоговому окну
-        dialogEndVictory.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));       // Прозрачный фон
+        Objects.requireNonNull(dialogEndVictory.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));       // Прозрачный фон
         dialogEndVictory.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);       // Чтобы диалоговое окно расщирялось на всё окно
         dialogEndVictory.setCancelable(false);       // Чтобы нельзя было закрыть окно за пределами окна
 
@@ -137,7 +131,7 @@ public class PictureCards extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Вернёмся к выбору уровня
-                Intent intent = new Intent(PictureCards.this, Play_1_of_2.class);
+                Intent intent = new Intent(WhereIsTheRabbit.this, Play_1_of_2.class);
                 startActivity(intent);
                 dialogEndVictory.dismiss();       // Закрываем диалоговое окно
             }
@@ -147,7 +141,7 @@ public class PictureCards extends AppCompatActivity {
         buttonContinue3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PictureCards.this, PictureCards.class);
+                Intent intent = new Intent(WhereIsTheRabbit.this, WhereIsTheRabbit.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.anim_alfa_up, R.anim.anim_alfa_down);       // Мягкий переход
                 dialogEndVictory.dismiss();
@@ -171,7 +165,7 @@ public class PictureCards extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Вернёмся к выбору уровня
-                Intent intent = new Intent(PictureCards.this, Play_1_of_2.class);
+                Intent intent = new Intent(WhereIsTheRabbit.this, Play_1_of_2.class);
                 startActivity(intent);
                 dialogEndAbsoluteVictory.dismiss();       // Закрываем диалоговое окно
             }
@@ -181,7 +175,7 @@ public class PictureCards extends AppCompatActivity {
         buttonContinue4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PictureCards.this, Play_1_of_2.class);
+                Intent intent = new Intent(WhereIsTheRabbit.this, Play_1_of_2.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.anim_alfa_up, R.anim.anim_alfa_down);       // Мягкий переход
                 dialogEndAbsoluteVictory.dismiss();
@@ -193,12 +187,12 @@ public class PictureCards extends AppCompatActivity {
         Timer timer = new Timer();       // Создаём переменную таймера
 
         SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);       // Создаём/обращаемся к файлу сохранения
-        final int prefProgressPictureCards = save.getInt("LvlPicCar", 1);       // Создаём переменную прогресса игры -Карточки с картинкой-
-        TextView textViewPictureCardLvl = findViewById(R.id.text_view_picture_card_lvl);       // Создаём переменную для обращения к полю уровня -карточек с картинками-
-        String textViewPictureCardLvlTmp = (String) textViewPictureCardLvl.getText();       // Создаём временную переменную текста уровня
-        textViewPictureCardLvl.setText(textViewPictureCardLvlTmp + prefProgressPictureCards);       // Вставляем в поле уровня текст -уровень- и номер уровня
+        final int prefProgressWhereRabbit = save.getInt("proWheRab", 1);       // Создаём переменную прогресса игры -Карточки с картинкой-
+        TextView textViewWhereRabbitLvl = findViewById(R.id.text_view_where_is_the_rabbit_lvl);       // Создаём переменную для обращения к полю уровня -где кролик-
+        String textViewWhereRabbitLvlTmp = (String) textViewWhereRabbitLvl.getText();       // Создаём временную переменную текста уровня
+        textViewWhereRabbitLvl.setText(textViewWhereRabbitLvlTmp + prefProgressWhereRabbit);       // Вставляем в поле уровня текст -уровень- и номер уровня
 
-        switch (prefProgressPictureCards){       // Определяем уровень и задаём переменные количества попыток и ошибок, соответственно уровню
+        switch (prefProgressWhereRabbit){       // Определяем уровень и задаём переменные количества попыток и ошибок, соответственно уровню
             case 1:
                 attempts = 4;
                 errorCounter = 3;
@@ -253,144 +247,86 @@ public class PictureCards extends AppCompatActivity {
             textView.setBackgroundResource(R.drawable.point);
         }
 
-        imgPictureCardsTable = findViewById(R.id.img_picture_cards_table);       // Создаём переменную для обращения к полю анимации колоды карт
-        imgCard1 = findViewById(R.id.img_card1);       // Создаём переменную для обращения к полю левой карты
-        imgCard2 = findViewById(R.id.img_card2);       // Создаём переменную для обращения к полю правой карты
+        imgHat1 = findViewById(R.id.img_hat1);       // Создаём переменную для обращения к полю левой шляпы
+        imgHat2 = findViewById(R.id.img_hat2);       // Создаём переменную для обращения к полю правой шляпы
 
-        picture = rand(4);       // Определяем рисунок карточки
-        spaceOrPicture = rand(2);       // Определяем будет ли карточка пустая или с рисунком
+        spaceOrRabbit = rand(2);       // Определяем в какой шляпе спрятался кролик, -0- в левой, -1- в правой
         count = 0;       // Устанавливаем счётчик хода на -0-
 
-        imgPictureCardsTable.setImageResource(R.drawable.picture_cards_animation);       // Присваиваем игровому полю анимацию сдавания карты
-        ((AnimationDrawable) imgPictureCardsTable.getDrawable()).start();       // Запускаем анимацию сдавания карты
-        imgCard1.setImageResource(R.drawable.card_space);       // Присваиваем полю левой карты пустую карту
-        animCard = AnimationUtils.loadAnimation(PictureCards.this, R.anim.anim_alpha);       // Присваиваем переменной -animCard- анимацию проявления с задержкой
-        imgCard1.startAnimation(animCard);       // Занпускаем анимацию у поля левой карты
-        // Определяем, какой рисунок карты и присваиваем правому полю соответствующую картинку, и запускаем у этого поля анимацию проявления с задержкой
-        switch (picture) {
-            case 0:
-                imgCard2.setImageResource(R.drawable.card_star);
-                imgCard2.startAnimation(animCard);
-                break;
-            case 1:
-                imgCard2.setImageResource(R.drawable.card_square);
-                imgCard2.startAnimation(animCard);
-                break;
-            case 2:
-                imgCard2.setImageResource(R.drawable.card_circle);
-                imgCard2.startAnimation(animCard);
-                break;
-            case 3:
-                imgCard2.setImageResource(R.drawable.card_triangle);
-                imgCard2.startAnimation(animCard);
-                break;
-        }
+        imgHat1.setImageResource(R.drawable.hat);       // Присваиваем левому полю картинку шляпы
+        imgHat2.setImageResource(R.drawable.hat);       // Присваиваем правому полю картинку шляпы
 
-        // Обрабатываем нажате на левую карту
-        imgCard1.setOnClickListener(new View.OnClickListener() {
+        // Обрабатываем нажате на левую шляпу
+        imgHat1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (spaceOrPicture == 0) {       // Если пустая карта, заменяем отображение колоды с картой, с пустой картинкой
-                    imgPictureCardsTable.setImageResource(R.drawable.deck_of_cards_card_space);       // Открываем карту, отображая пустую карту
+                if (spaceOrRabbit == 0) {       // Если кролик в левой шляпе
+                    imgHat1.setImageResource(R.drawable.rabbit_hat_animation);       // Заменяем левую картинку на анимацию с кроликом
+                    ((AnimationDrawable) imgHat1.getDrawable()).start();
                     TextView textView = findViewById(progress[count]);       // Создаём переменную для текстового поля прогресса по номеру попытки
                     textView.setBackgroundResource(R.drawable.point_green);       // Заменяем его на зелёный
-                    count++;       // увеличиваем счётчик на 1
-                } else {       // В противном случае, с соответствующей картинкой
-                    TextView textView = findViewById(progress[count]);
-                    textView.setBackgroundResource(R.drawable.point_red);
-                    count++;
-                    errorCounter--;
-                    switch (picture) {
-                        case 0:
-                            imgPictureCardsTable.setImageResource(R.drawable.deck_of_cards_card_star);
-                            break;
-                        case 1:
-                            imgPictureCardsTable.setImageResource(R.drawable.deck_of_cards_card_square);
-                            break;
-                        case 2:
-                            imgPictureCardsTable.setImageResource(R.drawable.deck_of_cards_card_circle);
-                            break;
-                        case 3:
-                            imgPictureCardsTable.setImageResource(R.drawable.deck_of_cards_card_triangle);
-                            break;
-                    }
+                    count++;       // Увеличиваем счётчик на 1
+                } else {       // В противном случае
+                    imgHat2.setImageResource(R.drawable.rabbit_hat_animation);       // Заменяем правую картинку на анимацию с кроликом
+                    ((AnimationDrawable) imgHat2.getDrawable()).start();
+                    TextView textView = findViewById(progress[count]);       // Создаём переменную для текстового поля прогресса по номеру попытки
+                    textView.setBackgroundResource(R.drawable.point_red);       // Заменяем его на красный
+                    count++;       // Увеличиваем счётчик на 1
+                    errorCounter--;       // Уменьшаем счётчик ошибок на 1
                 }
                 if (errorCounter < 0) {       // Если количество ошибок больше допустимого
-                    dialogEndLost.show();
-                } else if (count == attempts) {
-                    if (attempts < 10) {
+                    dialogEndLost.show();       // Показываем диалог проигрыша
+                } else if (count == attempts) {       // Если счётчик ходов стал равным количеству ходов на уровне
+                    if (attempts < 10) {       // Проверяем, если не 10-ый уровень
                         SharedPreferences.Editor editor = save.edit();       // Создаём переменную для редактирования сохранения
-                        editor.putInt("LvlPicCar", prefProgressPictureCards + 1);       // Сохраняем по ключу -Level-, значение увеличенное на -1-
+                        editor.putInt("proWheRab", prefProgressWhereRabbit + 1);       // Сохраняем по ключу -Level-, значение увеличенное на -1-
                         editor.apply();       // Сохраняем данные
-                        dialogEndVictory.show();
+                        Handler handler = new Handler();
+                        dialogEndVictory.show();       // Показываем диалог победы
                     } else {
-                        dialogEndAbsoluteVictory.show();
+                        dialogEndAbsoluteVictory.show();       // Показываем диалог прохождения всех уровней
                     }
-
-
                 } else {
-                    timer.schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            motion();       // Запускаем метод следующей попытки после срабатывания таймера
-                        }
-                    }, 1000);
+                    spaceOrRabbit = rand(2);
                 }
-
-
             }
         });
 
-        // Обрабатываем нажате на правую карту
-        imgCard2.setOnClickListener(new View.OnClickListener() {
+        // Обрабатываем нажате на правую шляпу
+        imgHat2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (spaceOrPicture == 0) {       // Если пустая карта, заменяем отображение колоды с картой, с пустой картинкой
-                    imgPictureCardsTable.setImageResource(R.drawable.deck_of_cards_card_space);
-                    TextView textView = findViewById(progress[count]);
-                    textView.setBackgroundResource(R.drawable.point_red);
-                    count++;
-                    errorCounter--;
-                } else {
-                    TextView textView = findViewById(progress[count]);
-                    textView.setBackgroundResource(R.drawable.point_green);
-                    count++;
-                    switch (picture) {       // В противном случае, с соответствующей картинкой
-                        case 0:
-                            imgPictureCardsTable.setImageResource(R.drawable.deck_of_cards_card_star);
-                            break;
-                        case 1:
-                            imgPictureCardsTable.setImageResource(R.drawable.deck_of_cards_card_square);
-                            break;
-                        case 2:
-                            imgPictureCardsTable.setImageResource(R.drawable.deck_of_cards_card_circle);
-                            break;
-                        case 3:
-                            imgPictureCardsTable.setImageResource(R.drawable.deck_of_cards_card_triangle);
-                            break;
-                    }
-                }
-                if (errorCounter < 0) {
-                    dialogEndLost.show();
-                } else if (count == attempts) {
-                        if (attempts < 10) {
-                        SharedPreferences.Editor editor = save.edit();       // Создаём переменную для редактирования сохранения
-                        editor.putInt("LvlPicCar", prefProgressPictureCards + 1);       // Сохраняем по ключу -Level-, значение -2-
-                        editor.apply();       // Сохраняем данные
-                        dialogEndVictory.show();
-                    } else {
-                        dialogEndAbsoluteVictory.show();
-                    }
-                } else {
-                    timer.schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            motion();       // Запускаем метод следующей попытки после срабатывания таймера
-                        }
-                    }, 1000);
-                }
 
+                if (spaceOrRabbit == 1) {       // Если кролик в левой шляпе
+                    imgHat2.setImageResource(R.drawable.rabbit_hat_animation);       // Заменяем правцю картинку на анимацию с кроликом
+                    ((AnimationDrawable) imgHat2.getDrawable()).start();
+                    TextView textView = findViewById(progress[count]);       // Создаём переменную для текстового поля прогресса по номеру попытки
+                    textView.setBackgroundResource(R.drawable.point_green);       // Заменяем его на зелёный
+                    count++;       // Увеличиваем счётчик на 1
+                } else {       // В противном случае
+                    imgHat1.setImageResource(R.drawable.rabbit_hat_animation);       // Заменяем левую картинку на анимацию с кроликом
+                    ((AnimationDrawable) imgHat1.getDrawable()).start();
+                    TextView textView = findViewById(progress[count]);       // Создаём переменную для текстового поля прогресса по номеру попытки
+                    textView.setBackgroundResource(R.drawable.point_red);       // Заменяем его на красный
+                    count++;       // Увеличиваем счётчик на 1
+                    errorCounter--;       // Уменьшаем счётчик ошибок на 1
+
+                }
+                if (errorCounter < 0) {       // Если количество ошибок больше допустимого
+                    dialogEndLost.show();       // Показываем диалог проигрыша
+                } else if (count == attempts) {       // Если счётчик ходов стал равным количеству ходов на уровне
+                    if (attempts < 10) {       // Проверяем, если не 10-ый уровень
+                        SharedPreferences.Editor editor = save.edit();       // Создаём переменную для редактирования сохранения
+                        editor.putInt("proWheRab", prefProgressWhereRabbit + 1);       // Сохраняем по ключу -Level-, значение увеличенное на -1-
+                        editor.apply();       // Сохраняем данные
+                        dialogEndVictory.show();       // Показываем диалог победы
+                    } else {
+                        dialogEndAbsoluteVictory.show();       // Показываем диалог прохождения всех уровней
+                    }
+                } else {
+                    spaceOrRabbit = rand(2);
+                }
             }
         });
 
@@ -398,7 +334,7 @@ public class PictureCards extends AppCompatActivity {
         bntBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PictureCards.this, Play_1_of_2.class);
+                Intent intent = new Intent(WhereIsTheRabbit.this, Play_1_of_2.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.anim_alfa_up, R.anim.anim_alfa_down);       // Мягкий переход
             }
@@ -410,30 +346,4 @@ public class PictureCards extends AppCompatActivity {
         return random.nextInt(n);
     }
 
-    private void motion() {
-        picture = rand(4);
-        spaceOrPicture = rand(2);
-        imgPictureCardsTable.setImageResource(R.drawable.picture_cards_animation);
-        ((AnimationDrawable) imgPictureCardsTable.getDrawable()).start();
-        imgCard1.setImageResource(R.drawable.card_space);
-        imgCard1.startAnimation(animCard);
-        switch (picture) {
-            case 0:
-                imgCard2.setImageResource(R.drawable.card_star);
-                imgCard2.startAnimation(animCard);
-                break;
-            case 1:
-                imgCard2.setImageResource(R.drawable.card_square);
-                imgCard2.startAnimation(animCard);
-                break;
-            case 2:
-                imgCard2.setImageResource(R.drawable.card_circle);
-                imgCard2.startAnimation(animCard);
-                break;
-            case 3:
-                imgCard2.setImageResource(R.drawable.card_triangle);
-                imgCard2.startAnimation(animCard);
-                break;
-        }
-    }
 }

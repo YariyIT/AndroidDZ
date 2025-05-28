@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+    <item android:drawable="@drawable/rabbit_hat_01" android:duration="500"/>
+    <item android:drawable="@drawable/rabbit_hat_02" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_03" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_04" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_05" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_06" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_07" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_08" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_09" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_10" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_11" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_12" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_13" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_14" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_15" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_16" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_17" android:duration="500"/>
+    <item android:drawable="@drawable/rabbit_hat_16" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_15" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_14" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_13" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_12" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_11" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_10" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_09" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_08" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_07" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_06" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_05" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_04" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_03" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_02" android:duration="50"/>
+    <item android:drawable="@drawable/rabbit_hat_01" android:duration="50"/>
+</animation-list>

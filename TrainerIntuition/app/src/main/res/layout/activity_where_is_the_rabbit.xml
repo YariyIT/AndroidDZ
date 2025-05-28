@@ -35,7 +35,7 @@
                     android:layout_gravity="start"/>
 
                 <TextView
-                    android:id="@+id/text_view_picture_card_space"
+                    android:id="@+id/text_view_were_is_the_rabbit_space"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -50,12 +50,12 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
                     android:gravity="center"
-                    android:text="@string/picture_cards"
+                    android:text="@string/where_is_the_rabbit"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/text_view_picture_card_lvl"
+                    android:id="@+id/text_view_where_is_the_rabbit_lvl"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -71,7 +71,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.2"
+                android:layout_weight="0.5"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -155,26 +155,24 @@
                 android:layout_weight="10">
 
                 <ImageView
-                    android:id="@+id/img_picture_cards_table"
+                    android:id="@+id/img_space_for_rabbit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/deck_of_cards" />
+                    app:srcCompat="@drawable/space_for_rabbit" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="horizontal"
-                android:layout_weight="3">
+                android:layout_weight="8">
 
                 <ImageView
-                    android:id="@+id/img_card1"
+                    android:id="@+id/img_hat1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -184,11 +182,11 @@
                     android:id="@+id/img_spase"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="0.5"
                     app:srcCompat="@drawable/space" />
 
                 <ImageView
-                    android:id="@+id/img_card2"
+                    android:id="@+id/img_hat2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -196,13 +194,6 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:orientation="horizontal"
-                android:layout_weight="3">
-
-            </LinearLayout>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,14 +13,18 @@
     <string name="progress">PROGRESS</string>
     <string name="choiсe_1_of_2_plays">Choose a game in a category,\n 1 of 2</string>
     <string name="picture_cards">Picture cards</string>
-    <string name="in_development">In development</string>
+    <string name="in_development">In development...</string>
     <string name="where_is_the_rabbit">Where\'s the rabbit</string>
     <string name="back">BACK</string>
     <string name="lt"><![CDATA[<]]></string>
     <string name="pic_card_dialog_prew">  Picture cards.\n  Choose a card with or without a picture. Correct answers will be marked in green, and incorrect ones in red.\n  From levels 1 to 7, you can make up to 3 mistakes. At level 8, there are only 2. At 9, there are 1. At 10, you can\'t make a single mistake.</string>
     <string name="dialog_lost">You\'ve lost...</string>
-    <string name="press_to_restart">I won\'t give up</string>
+    <string name="press_to_restart">I won\'t give up!</string>
     <string name="dialog_victory">You have passed the level!</string>
     <string name="dialog_absolute_victory">Congratulations!\n\nYou have completed all the levels!</string>
+    <string name="to_open_this_game">To open this game, you need to complete 3 levels of the previous game.</string>
+    <string name="to_open_this_level">To open this level, you need to complete the 6th level of each game from the previous level.</string>
+    <string name="lvl">Lvl</string>
+    <string name="where_is_the_rabbit_dialog_prew">"    Where's the rabbit.\n    Choose the hat that the rabbit is hiding in. Correct answers will be marked in green, and incorrect ones in red.\n    From levels 1 to 7, you can make up to 3 mistakes. At level 8, there are only 2. At 9, there are 1. At 10, you can't make a single mistake."</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

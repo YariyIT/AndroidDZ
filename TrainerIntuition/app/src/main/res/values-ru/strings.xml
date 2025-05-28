@@ -14,13 +14,17 @@
     <string name="progress">ПРОГРЕСС</string>
     <string name="choiсe_1_of_2_plays">Выберите игру в категории,\n 1 из 2</string>
     <string name="picture_cards">Карточки с картинкой</string>
-    <string name="in_development">В разработке</string>
+    <string name="in_development">В разработке...</string>
     <string name="where_is_the_rabbit">Где кролик</string>
     <string name="back">НАЗАД</string>
     <string name="lt"><![CDATA[<]]></string>
     <string name="pic_card_dialog_prew">\tКарточки с картинками.\n\tВыбирайте карточку с картинкой или без неё. Правильные ответы будут отмечаться зелёным, а неправильные красным.\n\tС 1 по 7 уровни вы можете совершить до 3 ошибок. На 8 уровне только 2. На 9 - 1. На 10 нельзя совершать ни одной ошибки.</string>
     <string name="dialog_lost">Вы проиграли...</string>
-    <string name="press_to_restart">I won\'t give up</string>
-    <string name="dialog_victory">You have passed the level!</string>
+    <string name="press_to_restart">Я не сдамся!</string>
+    <string name="dialog_victory">Вы прошли этот уровень!</string>
     <string name="dialog_absolute_victory">Поздравляем!\n\nВы прошли все уровни!</string>
+    <string name="to_open_this_game">Для открытия этой игры, вам нужно пройти 3 уровня предыдущей игры.</string>
+    <string name="to_open_this_level">Для открытия этого уровня, вам нужно пройти 6-ой уровень каждой игры из предыдущего уровня.</string>
+    <string name="lvl">Ур.</string>
+    <string name="where_is_the_rabbit_dialog_prew">"    Где кролик.\n    Выберите шляпу, в которой спрятался кролик. Правильные ответы будут отмечаться зелёным, а неправильные красным.\n    С 1 по 7 уровни вы можете совершить до 3 ошибок. На 8 уровне только 2. На 9 - 1. На 10 нельзя совершать ни одной ошибки."</string>
 </resources>
