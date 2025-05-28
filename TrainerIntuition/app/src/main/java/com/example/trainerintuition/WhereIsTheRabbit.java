@@ -36,6 +36,7 @@ public class WhereIsTheRabbit extends AppCompatActivity {
     Random random = new Random();       // Создаём переменную для рандомных чисел
     private int count,attempts, errorCounter;       // Объявляем переменные -count- счётчик прогресса, -attempts- колличество попыток, -errorCounter- счётчик ошибок
 
+
     @SuppressLint({"WrongViewCast", "MissingInflatedId", "ResourceType", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -184,7 +185,7 @@ public class WhereIsTheRabbit extends AppCompatActivity {
         //-----------------------------------------------------------
 
 
-        Timer timer = new Timer();       // Создаём переменную таймера
+//        Timer timer = new Timer();       // Создаём переменную таймера
 
         SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);       // Создаём/обращаемся к файлу сохранения
         final int prefProgressWhereRabbit = save.getInt("proWheRab", 1);       // Создаём переменную прогресса игры -Карточки с картинкой-
@@ -276,16 +277,44 @@ public class WhereIsTheRabbit extends AppCompatActivity {
                     errorCounter--;       // Уменьшаем счётчик ошибок на 1
                 }
                 if (errorCounter < 0) {       // Если количество ошибок больше допустимого
-                    dialogEndLost.show();       // Показываем диалог проигрыша
+
+                    // -------  Чтобы сначало прошла анимация последнего кролика, а потом всплыло диалоговое окно -------
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            dialogEndLost.show();       // Показываем диалог проигрыша
+                        }
+                    }, 3500);
+                    // ---------------------------------------------------------------------------------------------------
+
                 } else if (count == attempts) {       // Если счётчик ходов стал равным количеству ходов на уровне
                     if (attempts < 10) {       // Проверяем, если не 10-ый уровень
                         SharedPreferences.Editor editor = save.edit();       // Создаём переменную для редактирования сохранения
                         editor.putInt("proWheRab", prefProgressWhereRabbit + 1);       // Сохраняем по ключу -Level-, значение увеличенное на -1-
                         editor.apply();       // Сохраняем данные
+
+                        // -------  Чтобы сначало прошла анимация последнего кролика, а потом всплыло диалоговое окно -------
                         Handler handler = new Handler();
-                        dialogEndVictory.show();       // Показываем диалог победы
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                dialogEndVictory.show();       // Показываем диалог победы
+                            }
+                        }, 3500);
+                        // ---------------------------------------------------------------------------------------------------
+
                     } else {
-                        dialogEndAbsoluteVictory.show();       // Показываем диалог прохождения всех уровней
+                        // -------  Чтобы сначало прошла анимация последнего кролика, а потом всплыло диалоговое окно -------
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                dialogEndAbsoluteVictory.show();       // Показываем диалог прохождения всех уровней
+                            }
+                        }, 3500);
+                        // ---------------------------------------------------------------------------------------------------
+
                     }
                 } else {
                     spaceOrRabbit = rand(2);
@@ -314,15 +343,41 @@ public class WhereIsTheRabbit extends AppCompatActivity {
 
                 }
                 if (errorCounter < 0) {       // Если количество ошибок больше допустимого
-                    dialogEndLost.show();       // Показываем диалог проигрыша
+
+                    // -------  Чтобы сначало прошла анимация последнего кролика, а потом всплыло диалоговое окно -------
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            dialogEndLost.show();       // Показываем диалог проигрыша
+                        }
+                    }, 3500);
+                    // ---------------------------------------------------------------------------------------------------
+
                 } else if (count == attempts) {       // Если счётчик ходов стал равным количеству ходов на уровне
                     if (attempts < 10) {       // Проверяем, если не 10-ый уровень
                         SharedPreferences.Editor editor = save.edit();       // Создаём переменную для редактирования сохранения
                         editor.putInt("proWheRab", prefProgressWhereRabbit + 1);       // Сохраняем по ключу -Level-, значение увеличенное на -1-
                         editor.apply();       // Сохраняем данные
-                        dialogEndVictory.show();       // Показываем диалог победы
+                        // -------  Чтобы сначало прошла анимация последнего кролика, а потом всплыло диалоговое окно -------
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                dialogEndVictory.show();       // Показываем диалог победы
+                            }
+                        }, 3500);
+                        // ---------------------------------------------------------------------------------------------------
                     } else {
-                        dialogEndAbsoluteVictory.show();       // Показываем диалог прохождения всех уровней
+                        // -------  Чтобы сначало прошла анимация последнего кролика, а потом всплыло диалоговое окно -------
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                dialogEndAbsoluteVictory.show();       // Показываем диалог прохождения всех уровней
+                            }
+                        }, 3500);
+                        // ---------------------------------------------------------------------------------------------------
                     }
                 } else {
                     spaceOrRabbit = rand(2);
@@ -341,6 +396,7 @@ public class WhereIsTheRabbit extends AppCompatActivity {
         });
 
     }
+
 
     private int rand(int n) {
         return random.nextInt(n);
