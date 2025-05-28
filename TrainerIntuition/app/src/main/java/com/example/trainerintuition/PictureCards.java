@@ -63,24 +63,24 @@ public class PictureCards extends AppCompatActivity {
         Objects.requireNonNull(dialogStart.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));       // Удаляем фон диалогового окна
         dialogStart.setCancelable(false);       // Запрещаем закрывать диалоговое окно кликом за пределами диалогового окны
 
-        TextView btnClose = dialogStart.findViewById(R.id.button_close);       // Кнопка Назад
-        btnClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PictureCards.this, Play_1_of_2.class);
-                startActivity(intent);       // Возвращаемся на предидущее окно
-                overridePendingTransition(R.anim.anim_alfa_up, R.anim.anim_alfa_down);       // Мягкий переход
-                dialogStart.dismiss();       // Закрываем диалоговое окно
-            }
-        });
-
-        Button btnContinue = dialogStart.findViewById(R.id.button_continue);       // Кнопка Продолжить
-        btnContinue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogStart.dismiss();       // Закрываем диалоговое окно
-            }
-        });
+//        TextView btnClose = dialogStart.findViewById(R.id.button_close);       // Кнопка Назад
+//        btnClose.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(PictureCards.this, Play_1_of_2.class);
+//                startActivity(intent);       // Возвращаемся на предидущее окно
+//                overridePendingTransition(R.anim.anim_alfa_up, R.anim.anim_alfa_down);       // Мягкий переход
+//                dialogStart.dismiss();       // Закрываем диалоговое окно
+//            }
+//        });
+//
+//        Button btnContinue = dialogStart.findViewById(R.id.button_continue);       // Кнопка Продолжить
+//        btnContinue.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dialogStart.dismiss();       // Закрываем диалоговое окно
+//            }
+//        });
 
         dialogStart.show();       // Показать диалоговое окно
 
@@ -262,30 +262,74 @@ public class PictureCards extends AppCompatActivity {
         spaceOrPicture = rand(2);       // Определяем будет ли карточка пустая или с рисунком
         count = 0;       // Устанавливаем счётчик хода на -0-
 
-        imgPictureCardsTable.setImageResource(R.drawable.picture_cards_animation);       // Присваиваем игровому полю анимацию сдавания карты
-        ((AnimationDrawable) imgPictureCardsTable.getDrawable()).start();       // Запускаем анимацию сдавания карты
-        imgCard1.setImageResource(R.drawable.card_space);       // Присваиваем полю левой карты пустую карту
-        animCard = AnimationUtils.loadAnimation(PictureCards.this, R.anim.anim_alpha);       // Присваиваем переменной -animCard- анимацию проявления с задержкой
-        imgCard1.startAnimation(animCard);       // Занпускаем анимацию у поля левой карты
-        // Определяем, какой рисунок карты и присваиваем правому полю соответствующую картинку, и запускаем у этого поля анимацию проявления с задержкой
-        switch (picture) {
-            case 0:
-                imgCard2.setImageResource(R.drawable.card_star);
-                imgCard2.startAnimation(animCard);
-                break;
-            case 1:
-                imgCard2.setImageResource(R.drawable.card_square);
-                imgCard2.startAnimation(animCard);
-                break;
-            case 2:
-                imgCard2.setImageResource(R.drawable.card_circle);
-                imgCard2.startAnimation(animCard);
-                break;
-            case 3:
-                imgCard2.setImageResource(R.drawable.card_triangle);
-                imgCard2.startAnimation(animCard);
-                break;
-        }
+//        imgPictureCardsTable.setImageResource(R.drawable.picture_cards_animation);       // Присваиваем игровому полю анимацию сдавания карты
+//        imgCard1.setImageResource(R.drawable.card_space);       // Присваиваем полю левой карты пустую карту
+//        // Определяем, какой рисунок карты и присваиваем правому полю соответствующую картинку
+//        switch (picture) {
+//            case 0:
+//                imgCard2.setImageResource(R.drawable.card_star);
+//                break;
+//            case 1:
+//                imgCard2.setImageResource(R.drawable.card_square);
+//                break;
+//            case 2:
+//                imgCard2.setImageResource(R.drawable.card_circle);
+//                break;
+//            case 3:
+//                imgCard2.setImageResource(R.drawable.card_triangle);
+//                break;
+//        }
+
+        TextView btnClose = dialogStart.findViewById(R.id.button_close);       // Кнопка Назад
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PictureCards.this, Play_1_of_2.class);
+                startActivity(intent);       // Возвращаемся на предидущее окно
+                overridePendingTransition(R.anim.anim_alfa_up, R.anim.anim_alfa_down);       // Мягкий переход
+                dialogStart.dismiss();       // Закрываем диалоговое окно
+            }
+        });
+
+        Button btnContinue = dialogStart.findViewById(R.id.button_continue);       // Кнопка Продолжить
+        btnContinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogStart.dismiss();       // Закрываем диалоговое окно
+                Handler handler = new Handler();       // Делаем небольшую задержку после закрытия диалогового окна
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        imgPictureCardsTable.setImageResource(R.drawable.picture_cards_animation);       // Присваиваем игровому полю анимацию сдавания карты
+                        imgCard1.setImageResource(R.drawable.card_space);       // Присваиваем полю левой карты пустую карту
+                        // Определяем, какой рисунок карты и присваиваем правому полю соответствующую картинку
+                        switch (picture) {
+                            case 0:
+                                imgCard2.setImageResource(R.drawable.card_star);
+                                break;
+                            case 1:
+                                imgCard2.setImageResource(R.drawable.card_square);
+                                break;
+                            case 2:
+                                imgCard2.setImageResource(R.drawable.card_circle);
+                                break;
+                            case 3:
+                                imgCard2.setImageResource(R.drawable.card_triangle);
+                                break;
+                        }
+                        ((AnimationDrawable) imgPictureCardsTable.getDrawable()).start();       // Запускаем анимацию сдавания карты
+                        animCard = AnimationUtils.loadAnimation(PictureCards.this, R.anim.anim_alpha);       // Присваиваем переменной -animCard- анимацию проявления с задержкой
+                        imgCard1.startAnimation(animCard);       // Занпускаем анимацию у поля левой карты
+                        // Запускаем у правого поля анимацию проявления с задержкой
+                        imgCard2.startAnimation(animCard);
+                    }
+                }, 1000);
+
+
+            }
+        });
+
+
 
         // Обрабатываем нажате на левую карту
         imgCard1.setOnClickListener(new View.OnClickListener() {
