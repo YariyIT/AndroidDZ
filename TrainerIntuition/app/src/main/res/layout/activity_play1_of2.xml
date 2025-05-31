@@ -102,6 +102,36 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/goalkeeper"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_gif_lvl_closed">
+
+                <ImageView
+                    android:id="@+id/img_goalkeeper"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/goalkeeper_icon" />
+
+                <TextView
+                    android:id="@+id/text_goalkeeper"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/goalkeeper"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
             <ImageView
                 android:id="@+id/img_reset_all_games_1_of_2"
                 android:layout_width="match_parent"

@@ -26,5 +26,7 @@
     <string name="to_open_this_level">To open this level, you need to complete the 6th level of each game from the previous level.</string>
     <string name="lvl">Lvl</string>
     <string name="where_is_the_rabbit_dialog_prew">"    Where's the rabbit.\n    Choose the hat that the rabbit is hiding in. Correct answers will be marked in green, and incorrect ones in red.\n    From levels 1 to 7, you can make up to 3 mistakes. At level 8, there are only 2. At 9, there are 1. At 10, you can't make a single mistake."</string>
+    <string name="goalkeeper">Goalkeeper</string>
+    <string name="goalkeeper_dialog_peview">"    The goalkeeper.  \n    Choose where the player kicks. You only have 5 seconds to make a choice. The countdown will be shown on the field. \n    Correct answers will be marked in green, and incorrect ones in red.    \n    From levels 1 to 7, you can make up to 3 mistakes. At level 8, there are only 2. At 9, there are 1. At 10, you can't make a single mistake."</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

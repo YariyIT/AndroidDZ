@@ -51,6 +51,11 @@ public class WhereIsTheRabbit extends AppCompatActivity {
         Objects.requireNonNull(dialogStart.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));       // Удаляем фон диалогового окна
         dialogStart.setCancelable(false);       // Запрещаем закрывать диалоговое окно кликом за пределами диалогового окны
 
+        ImageView prevImg = dialogStart.findViewById(R.id.preview_img);       // Создаём переменную для обращения к полю картинки превью
+        prevImg.setImageResource(R.drawable.rabbit_hat_hat);       // Заменяем превью картинку на превью картинку -где кролик-
+        TextView textPrev = dialogStart.findViewById(R.id.text_description);       // Создаём переменную для обращения к полю теката превью
+        textPrev.setText(R.string.where_is_the_rabbit_dialog_prew);       // Заменяем превью текст на превью текст -где кролик-
+
 
         TextView btnClose = dialogStart.findViewById(R.id.button_close);       // Кнопка Назад
         btnClose.setOnClickListener(new View.OnClickListener() {
@@ -71,11 +76,6 @@ public class WhereIsTheRabbit extends AppCompatActivity {
             }
         });
 
-        ImageView prevImg = dialogStart.findViewById(R.id.preview_img);       // Создаём переменную для обращения к полю картинки превью
-        prevImg.setImageResource(R.drawable.rabbit_hat_prew);       // Заменяем превью картинку на превью картинку -где кролик-
-        TextView textPrev = dialogStart.findViewById(R.id.text_description);       // Создаём переменную для обращения к полю теката превью
-        textPrev.setText(R.string.where_is_the_rabbit_dialog_prew);       // Заменяем превью текст на превью текст -где кролик-
-
         dialogStart.show();       // Показать диалоговое окно
 
         //-----------------------------------------------------------
@@ -88,6 +88,8 @@ public class WhereIsTheRabbit extends AppCompatActivity {
         dialogEndLost.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);       // Чтобы диалоговое окно расщирялось на всё окно
         dialogEndLost.setCancelable(false);       // Чтобы нельзя было закрыть окно за пределами окна
 
+        ImageView prevImg2 = dialogEndLost.findViewById(R.id.preview_img);       // Создаём переменную для обращения к полю картинки превью
+        prevImg2.setImageResource(R.drawable.rabbit_hat_hat);       // Заменяем превью картинку на превью картинку -где кролик-
         TextView textDescriptionEnd = dialogEndLost.findViewById(R.id.text_description);
         textDescriptionEnd.setText(R.string.dialog_lost);
 
@@ -124,6 +126,8 @@ public class WhereIsTheRabbit extends AppCompatActivity {
         dialogEndVictory.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);       // Чтобы диалоговое окно расщирялось на всё окно
         dialogEndVictory.setCancelable(false);       // Чтобы нельзя было закрыть окно за пределами окна
 
+        ImageView prevImg3 = dialogEndVictory.findViewById(R.id.preview_img);       // Создаём переменную для обращения к полю картинки превью
+        prevImg3.setImageResource(R.drawable.rabbit_hat_hat);       // Заменяем превью картинку на превью картинку -где кролик-
         TextView textDescriptionEnd2 = dialogEndVictory.findViewById(R.id.text_description);
         textDescriptionEnd2.setText(R.string.dialog_victory);
 
@@ -158,6 +162,8 @@ public class WhereIsTheRabbit extends AppCompatActivity {
         dialogEndAbsoluteVictory.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);       // Чтобы диалоговое окно расщирялось на всё окно
         dialogEndAbsoluteVictory.setCancelable(false);       // Чтобы нельзя было закрыть окно за пределами окна
 
+        ImageView prevImg4 = dialogEndAbsoluteVictory.findViewById(R.id.preview_img);       // Создаём переменную для обращения к полю картинки превью
+        prevImg4.setImageResource(R.drawable.rabbit_hat_hat);       // Заменяем превью картинку на превью картинку -где кролик-
         TextView textDescriptionEnd3 = dialogEndAbsoluteVictory.findViewById(R.id.text_description);
         textDescriptionEnd3.setText(R.string.dialog_absolute_victory);
 
@@ -188,7 +194,7 @@ public class WhereIsTheRabbit extends AppCompatActivity {
 //        Timer timer = new Timer();       // Создаём переменную таймера
 
         SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);       // Создаём/обращаемся к файлу сохранения
-        final int prefProgressWhereRabbit = save.getInt("proWheRab", 1);       // Создаём переменную прогресса игры -Карточки с картинкой-
+        final int prefProgressWhereRabbit = save.getInt("LvlWheRab", 1);       // Создаём переменную прогресса игры -Карточки с картинкой-
         TextView textViewWhereRabbitLvl = findViewById(R.id.text_view_where_is_the_rabbit_lvl);       // Создаём переменную для обращения к полю уровня -где кролик-
         String textViewWhereRabbitLvlTmp = (String) textViewWhereRabbitLvl.getText();       // Создаём временную переменную текста уровня
         textViewWhereRabbitLvl.setText(textViewWhereRabbitLvlTmp + prefProgressWhereRabbit);       // Вставляем в поле уровня текст -уровень- и номер уровня
@@ -291,7 +297,7 @@ public class WhereIsTheRabbit extends AppCompatActivity {
                 } else if (count == attempts) {       // Если счётчик ходов стал равным количеству ходов на уровне
                     if (attempts < 10) {       // Проверяем, если не 10-ый уровень
                         SharedPreferences.Editor editor = save.edit();       // Создаём переменную для редактирования сохранения
-                        editor.putInt("proWheRab", prefProgressWhereRabbit + 1);       // Сохраняем по ключу -Level-, значение увеличенное на -1-
+                        editor.putInt("LvlWheRab", prefProgressWhereRabbit + 1);       // Сохраняем по ключу -Level-, значение увеличенное на -1-
                         editor.apply();       // Сохраняем данные
 
                         // -------  Чтобы сначало прошла анимация последнего кролика, а потом всплыло диалоговое окно -------
@@ -357,7 +363,7 @@ public class WhereIsTheRabbit extends AppCompatActivity {
                 } else if (count == attempts) {       // Если счётчик ходов стал равным количеству ходов на уровне
                     if (attempts < 10) {       // Проверяем, если не 10-ый уровень
                         SharedPreferences.Editor editor = save.edit();       // Создаём переменную для редактирования сохранения
-                        editor.putInt("proWheRab", prefProgressWhereRabbit + 1);       // Сохраняем по ключу -Level-, значение увеличенное на -1-
+                        editor.putInt("LvlWheRab", prefProgressWhereRabbit + 1);       // Сохраняем по ключу -Level-, значение увеличенное на -1-
                         editor.apply();       // Сохраняем данные
                         // -------  Чтобы сначало прошла анимация последнего кролика, а потом всплыло диалоговое окно -------
                         Handler handler = new Handler();

@@ -30,6 +30,8 @@ public class Play_1_of_2 extends AppCompatActivity {
 
         SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);
         final int lvlPicCar = save.getInt("LvlPicCar", 1);
+        final int lvlWheRab = save.getInt("LvlWheRab", 1);
+
 
         // ------------------------  Вызов диалогового окна -В РАЗРАБОТКЕ-  ------------------------
         dialogInDevelopment = new Dialog(this);
@@ -88,6 +90,24 @@ public class Play_1_of_2 extends AppCompatActivity {
                 if (lvlPicCar>=4){       // Если у предыдущей игры пройден 3-ий уровень
                     Intent intent = new Intent(Play_1_of_2.this, WhereIsTheRabbit.class);       // Создаём переменную для перехода к игре -Где кролик-
                     startActivity(intent);       // Переходим к игре -Где кролик-
+                    overridePendingTransition(R.anim.anim_alfa_up, R.anim.anim_alfa_down);       // Мягкий переход
+                } else {       // Если нет
+                    dialogMakeForOpeningGame.show();       // Отображаем диалоговое окно -Что нужно сделать для открытия игры-
+                }
+            }
+        });
+
+        LinearLayout goalkeeper = findViewById(R.id.goalkeeper);
+        if (lvlWheRab>=4){       // Если у предыдущей игры пройден 3-ий уровень
+            goalkeeper.setBackgroundResource(R.drawable.background_gif_lvl_open);       // Отображаем бэкграунд цветом открытой игры
+        }
+
+        goalkeeper.setOnClickListener(new View.OnClickListener() {       // Проверяем нажание на игру -Вратарь-
+            @Override
+            public void onClick(View v) {
+                if (lvlWheRab>=4){       // Если у предыдущей игры пройден 3-ий уровень
+                    Intent intent = new Intent(Play_1_of_2.this, Goalkeeper.class);       // Создаём переменную для перехода к игре -Вратарь-
+                    startActivity(intent);       // Переходим к игре -Вратарь-
                     overridePendingTransition(R.anim.anim_alfa_up, R.anim.anim_alfa_down);       // Мягкий переход
                 } else {       // Если нет
                     dialogMakeForOpeningGame.show();       // Отображаем диалоговое окно -Что нужно сделать для открытия игры-

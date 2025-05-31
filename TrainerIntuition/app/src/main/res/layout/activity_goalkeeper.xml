@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PictureCards">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="30dp"
+        android:background="@drawable/background_blue_grin">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/button_back_1_2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:text="@string/lt"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="@drawable/bnt_grey_press_white"
+                    android:layout_gravity="start"/>
+
+                <TextView
+                    android:id="@+id/text_view_goalkeeper_space"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:gravity="center"
+                    android:text="@string/goalkeeper"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_view_goalkeeper_lvl"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:gravity="center"
+                    android:text="@string/lvl"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/goalkeeper_progress"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.2"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/point_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/point_alfa"/>
+
+                <TextView
+                    android:id="@+id/point_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/point_alfa"/>
+
+                <TextView
+                    android:id="@+id/point_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/point_alfa"/>
+
+                <TextView
+                    android:id="@+id/point_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/point_alfa"/>
+
+                <TextView
+                    android:id="@+id/point_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/point_alfa"/>
+
+                <TextView
+                    android:id="@+id/point_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/point_alfa"/>
+
+                <TextView
+                    android:id="@+id/point_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/point_alfa"/>
+
+                <TextView
+                    android:id="@+id/point_8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/point_alfa"/>
+
+                <TextView
+                    android:id="@+id/point_9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/point_alfa"/>
+
+                <TextView
+                    android:id="@+id/point_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/point_alfa"/>
+
+
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_height="0dp"
+                android:layout_weight="15">
+
+                <ImageView
+                    android:id="@+id/img_goalkeeper_table"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/goalkeeper_00" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:layout_weight="3">
+
+                <ImageView
+                    android:id="@+id/img_left"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/space" />
+
+                <ImageView
+                    android:id="@+id/img_spase"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/space" />
+
+                <ImageView
+                    android:id="@+id/img_right"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/space" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:layout_weight="3">
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
