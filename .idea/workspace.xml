@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4b6b7ba-581c-4fe3-83e0-838f9775d024" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/DZ04/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DZ04/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="d7333b75-813c-44d4-9b80-83d850b5d372" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/DZ.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,12 +25,9 @@
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "customColor": "",
-  "associatedIndex": 1
+  "associatedIndex": 2
 }]]></component>
-  <component name="ProjectId" id="2uzAQn1fizjbkiL5Ph4Ni2Y8gpc" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="1" id="Add" />
-  </component>
+  <component name="ProjectId" id="2y4XVFth7drQvv0R7l6exxp4WEZ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -34,22 +36,24 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "android.gradle.sync.needed": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "G:/IT_Technology/Android411/Android/DZ"
+    "last_opened_file_path": "F:/IT_Technology/Android411/Android/DZ/DZ13"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d4b6b7ba-581c-4fe3-83e0-838f9775d024" name="Changes" comment="" />
-      <created>1743241015203</created>
+      <changelist id="d7333b75-813c-44d4-9b80-83d850b5d372" name="Changes" comment="" />
+      <created>1749094842710</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1743241015203</updated>
+      <updated>1749094842710</updated>
     </task>
     <servers />
   </component>
