@@ -1,6 +1,10 @@
 package com.example.filemanager.fragments;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -15,10 +19,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Environment;
 import android.provider.Settings;
+import android.text.format.Formatter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.filemanager.FileAdapter;
@@ -26,7 +34,9 @@ import com.example.filemanager.OnFileSelectedListener;
 import com.example.filemanager.R;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -40,6 +50,8 @@ public class CardFragment extends Fragment implements OnFileSelectedListener {
     File storageSd;       // Объявляем переменную для работы с файлами
     View view;
     String data;
+
+    String[] items = {"Details", "Rename", "Delete"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,13 +86,7 @@ public class CardFragment extends Fragment implements OnFileSelectedListener {
         }
         runtimePermission();       //
 
-        // - - - -  Получаем доступ  к внутреннеей SD карте  - - - -
-//        String internalStorage = System.getenv("REMOVABLE_STORAGE");
-//        storageSd = new File(internalStorage);
-//
-//        tvPathHolder.setText(storageSd.getAbsolutePath());
-//        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//        runtimePermission();
+
         return view;
     }
 
@@ -169,7 +175,82 @@ public class CardFragment extends Fragment implements OnFileSelectedListener {
 
     @Override
     public void onFileLongClicked(File file) {
+        final Dialog optionDialog = new Dialog(getContext());
+        optionDialog.setContentView(R.layout.option_dialog);
+        optionDialog.setTitle("Select Options");
+        ListView options = optionDialog.findViewById(R.id.list);
 
+        CustomAdapter customAdapter = new CustomAdapter();
+        options.setAdapter(customAdapter);
+        optionDialog.show();
+
+        options.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = parent.getItemAtPosition(position).toString();
+                switch (selectedItem)
+                {
+                    case "Details":
+                        AlertDialog.Builder detailDialog = new AlertDialog.Builder(getContext());
+                        detailDialog.setTitle("Details:");
+                        final TextView details = new TextView(getContext());
+                        detailDialog.setView(details);
+                        Date lastModified = new Date(file.lastModified());
+                        SimpleDateFormat formated = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                        String formatedDate = formated.format(lastModified);
+                        details.setText("File Name: " + file.getName() + "\n" + "Size: " + Formatter.formatFileSize(getContext(), file.length())  + "\n" + "Path: " + file.getAbsolutePath() + "\n" + "Last Modified: " + formatedDate);
+
+
+                        details.setPadding(70, 10, 10, 10);
+                        detailDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+//                                optionDialog.cancel();
+                                optionDialog.closeOptionsMenu();
+                            }
+                        });
+                        AlertDialog alertDialogDetails = detailDialog.create();
+                        alertDialogDetails.show();
+                        break;
+                }
+            }
+        });
+    }
+
+    class CustomAdapter extends BaseAdapter {
+
+        @Override
+        public int getCount() {       // Количество элементов в этом массиве
+            return items.length;
+        }
+
+        @Override
+        public Object getItem(int position) {       // Получить каждый элемент
+            return items[position];
+        }
+
+        @Override
+        public long getItemId(int position) {       //
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {       // Получить просмотр элемента
+            View myView = getLayoutInflater().inflate(R.layout.option_layout, null);
+            ImageView imgOption = myView.findViewById(R.id.img_option);
+            TextView txtOptions = myView.findViewById(R.id.txt_option);
+
+            txtOptions.setText(items[position]);
+            if (items[position].equals("Details")){
+                imgOption.setImageResource(R.drawable.baseline_info_outline_24);
+            } else if (items[position].equals("Rename")) {
+                imgOption.setImageResource(R.drawable.baseline_drive_file_rename_outline_24);
+            } else if (items[position].equals("Delete")) {
+                imgOption.setImageResource(R.drawable.baseline_delete_forever_24);
+            }
+            return myView;
+        }
     }
 
 }
